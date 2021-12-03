@@ -58,7 +58,7 @@ export default function MenuItem(props) {
                 </ListItemButton>
                 {content && content.children.map(item => {
                     return (
-                        <div style={{paddingLeft: 40}}>
+                        <div style={{paddingLeft: 40}} key={item.id}>
                             <Collapse in={open} timeout="auto" unmountOnExit key={item.id}>
                                 <List component="div" disablePadding>
                                     <MenuItem
