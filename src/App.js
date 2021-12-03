@@ -1,25 +1,37 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
+import { getContent } from './resourse/content'
+import MenuItem from './components/MenuItem'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [content, setContent] = React.useState(null)
+
+    React.useEffect(() => {
+        getContent()
+            .then(res => {
+                setContent(res)
+            })
+    }, [])
+
+    return (
+        <div className='App'>
+            <h1>
+                Digital Habits. Entrance test
+            </h1>
+            <div className='Container'>
+                {content && content.children.map(item => {
+                    return (
+                        <MenuItem
+                            key={item.id}
+                            id={item.id}
+                            title={item.title}
+                            isChildren={!!item.children}
+                        />
+                    )
+                })}
+            </div>
+        </div>
+    );
 }
 
 export default App;
