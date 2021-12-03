@@ -1,7 +1,7 @@
 export async function getContent(dirid) {
-    let url = 'https://164.90.161.80:3000/api/content'
+    let url = 'http://164.90.161.80:3000/api/content'
     if (dirid) {
-        url = `https://164.90.161.80:3000/api/content?dirId=${dirid}`
+        url = `http://164.90.161.80:3000/api/content?dirId=${dirid}`
     }
     const res = await fetch(url, {
         method: 'GET',
